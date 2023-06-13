@@ -1,0 +1,142 @@
+<div class="container">
+
+   
+      
+
+  <mat-card class="example-card">
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner" *ngFor="let i of productDetailList">
+        <ng-container *ngFor="let j of i.productImages">
+          <div class="carousel-item active" data-bs-interval="1000">
+            <img src={{j.image1}} class="d-block w-100 img-responsive" alt="..." loading="eager">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src={{j.image2}} class="d-block w-100 img-responsive" alt="..." loading="eager">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src={{j.image3}} class="d-block w-100 img-responsive" alt="..." loading="eager">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src={{j.image4}} class="d-block w-100 img-responsive" alt="..." loading="eager">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src={{j.image5}} class="d-block w-100 img-responsive" alt="..." loading="eager">
+          </div> 
+        </ng-container>
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+   
+  </mat-card>
+
+
+  <mat-card class="example-card detailCard" *ngFor="let pro of productDetailList">
+
+    
+    <form>
+      <div class="form-col">
+        <div *ngIf="alert" class="alert {{alertType}} alert-dismissible fade show" role="alert">
+          <strong>{{alertHead}}</strong>&nbsp;&nbsp;&nbsp;{{alertContent}}
+          <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> 
+        <label class="productNameText">{{pro.product_name}}</label>
+        <label>Units Available: {{pro.product_unit_instock}}</label>
+        <label class="productNameText" id="price"><p [ngStyle]="{'text-decoration':pro.product_discount_price? 'line-through' : 'none' }">{{pro.product_unit_price | currency:'INR'}}</p>&nbsp;<p *ngIf="pro.product_discount_price" style="color:red;">-{{pro.product_discount_percentage}}%</p></label>
+        <span *ngIf="pro.product_discount_price != null || pro.product_discount_price != 0">
+          <label class="productNameText">{{pro.product_discount_price | currency:'INR'}}</label>
+        </span>
+        &nbsp;
+        <mat-form-field appearance="fill">
+          <mat-label>Size</mat-label>
+          <mat-select [(ngModel)]="shoesSize" name="shoesSize" required>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="7">7</mat-option>
+            <mat-option value="8">8</mat-option>
+            <mat-option value="9">9</mat-option>
+            <mat-option value="10">10</mat-option>
+            <mat-option value="11">11</mat-option>
+            <mat-option value="12">12</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Size Guide</button>
+        &nbsp;
+        
+        <button type="button" class="btn btn-outline-secondary productdetailbutton" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+          Product Details
+        </button>
+        &nbsp;
+        &nbsp;
+        <button mat-raised-button type="submit" (click)="addCart(pro)" [disabled]="!shoesSize">Add to cart</button>
+        &nbsp;
+        &nbsp;
+        <!-- <button mat-raised-button type="submit" (click)="buyItem(pro)">Buy now</button> -->
+      </div>
+      
+      
+    </form>
+    
+  </mat-card>
+
+ 
+
+
+</div>
+   
+    
+    
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Size Guide</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/images/sizeguide/sizeguide.jpg" alt="Sizeguide" class="sizeguide" height="400px" width="450px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal2 -->
+
+
+<!-- modal1 -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" *ngFor="let i of productDetailList">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">{{i.product_name}}</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{i.product_description}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  
+      </div>
+    </div>
+  </div>
+</div>
+<!--modal1-->

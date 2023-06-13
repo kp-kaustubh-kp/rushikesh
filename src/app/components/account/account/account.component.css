@@ -1,0 +1,28 @@
+.login{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.card{
+    max-width:100%;
+    max-height:100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 0px -30px;
+}
+.card-body{
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    width:225px;
+}
+
+@media screen and (max-width:575px){
+
+    .btn{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+  }

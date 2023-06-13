@@ -1,0 +1,61 @@
+
+
+.tableContainer{
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+  
+
+}
+table{
+   
+    width: 100%;
+}
+.tableImg{
+    border-radius: 10px;
+}
+
+.page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+   
+}
+
+.filterandsort{
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+}
+.search, .sort{
+    box-shadow: none;
+}
+td{
+    font-size: 15px;
+}
+
+@media screen and (max-width:575px){
+
+    .tableImg{
+        display: none;
+    }
+    td{
+        font-size: 12px;
+    }
+    button{
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+    th{
+        font-size: 12px;
+    }
+    .filterandsort{
+        flex-direction: column;
+    }
+    .page{
+        font-size: 12px;
+    }
+   
+ }

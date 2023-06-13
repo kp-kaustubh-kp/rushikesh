@@ -1,0 +1,190 @@
+
+
+
+<div class="container">
+   
+    <!-- <div class="card dataupload">
+        <div class="card-body">
+            <h5 class="card-title">Product Details</h5>
+            <form class="example-form"  [formGroup]="dataform" (ngSubmit)="onSubmitData(dataform.value)">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name" placeholder=""> 
+                    
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput formControlName="description" placeholder=""> 
+                    
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input type="text" matInput formControlName="price" placeholder=""> 
+                 
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Stock</mat-label>
+                    <input type="text" matInput formControlName="stock" placeholder=""> 
+                
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="city">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                      <mat-option *ngFor="let cat of categoryList" value={{cat.id}}>{{cat.category_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button type="submit" class="btn btn-secondary">Submit</button> 
+
+            </form>
+
+           
+        </div>
+        <div class="card-body">
+
+            <h5 class="card-title">Product Image Upload</h5>
+            <form class="example-form"  [formGroup]="imageform" (ngSubmit)="onSubmitImage(imageform.value)">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 1</mat-label>
+                    <input type="text" matInput formControlName="image1" placeholder=""> 
+                  
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 2</mat-label>
+                    <input type="text" matInput formControlName="image2" placeholder=""> 
+               
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 3</mat-label>
+                    <input type="text" matInput formControlName="image3" placeholder=""> 
+                    
+                </mat-form-field>
+                
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 4</mat-label>
+                    <input type="text" matInput formControlName="image4" placeholder=""> 
+                  
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 5</mat-label>
+                    <input type="text" matInput formControlName="image5" placeholder=""> 
+                  
+                </mat-form-field>
+
+                
+
+                <button type="submit" class="btn btn-secondary">Submit</button> 
+
+            </form>
+
+        </div>
+    </div> -->
+
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="Product Details">
+          <div class="example-small-box mat-elevation-z4">
+
+            <div *ngIf="alert" class="alert {{alertType}} alert-dismissible fade show" role="alert">
+                <strong>{{alertHead}}</strong>&nbsp;&nbsp;&nbsp;{{alertContent}}
+                <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            
+            <form class="example-form"  [formGroup]="dataform" (ngSubmit)="onSubmitData(dataform.value)">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name" placeholder=""> 
+                    
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput formControlName="description" placeholder=""> 
+                    
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input type="text" matInput formControlName="price" placeholder=""> 
+                 
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Stock</mat-label>
+                    <input type="text" matInput formControlName="stock" placeholder=""> 
+                
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="city">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                      <mat-option *ngFor="let cat of categoryList" value={{cat.id}}>{{cat.category_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button type="submit" mat-raised-button>Submit</button> 
+
+            </form>
+           
+          </div>
+        </mat-tab>
+        <mat-tab label="Product Images">
+          <div class="example-large-box mat-elevation-z4">
+
+            <div *ngIf="alert" class="alert {{alertType}} alert-dismissible fade show" role="alert">
+                <strong>{{alertHead}}</strong>&nbsp;&nbsp;&nbsp;{{alertContent}}
+                <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <form class="example-form"  [formGroup]="imageform" (ngSubmit)="onSubmitImage(imageform.value)">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Image 1</mat-label>
+                        <input type="text" matInput formControlName="image1" placeholder="" >  
+                </mat-form-field>
+                
+                
+               
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 2</mat-label>
+                    <input type="text" matInput formControlName="image2" placeholder=""> 
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 3</mat-label>
+                    <input type="text" matInput formControlName="image3" placeholder=""> 
+                </mat-form-field>
+                
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 4</mat-label>
+                    <input type="text" matInput formControlName="image4" placeholder="">      
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Image 5</mat-label>
+                    <input type="text" matInput formControlName="image5" placeholder=""> 
+                </mat-form-field>
+
+                
+
+                <button type="submit" mat-raised-button color="success">Submit</button> 
+
+            </form>
+           
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+</div>

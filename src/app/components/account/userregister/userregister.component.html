@@ -1,0 +1,94 @@
+
+
+
+<form class="example-form" [formGroup]="loginform" (ngSubmit)="registerUser(loginform.value)">
+
+  <div *ngIf="alert" class="alert {{alertType}} alert-dismissible fade show" role="alert">
+    <strong>{{alertHead}}</strong>&nbsp;&nbsp;&nbsp;{{alertContent}}
+    <button (click)="closeAlert()"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"> 
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" placeholder="password"> 
+    <mat-error *ngIf="loginform.get('password')?.errors?.['minlength']">Minimum 8 characters</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input type="text" matInput formControlName="firstname" placeholder="First Name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input type="text" matInput formControlName="lastname" placeholder="Last Name">
+  </mat-form-field>
+
+  <!-- <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Address</mat-label>
+    <textarea type="text" formControlName="address" matInput placeholder="House or Flat No"></textarea>
+    <small *ngIf="loginform.get('address')?.invalid && loginform.get('address')?.touched"  class="text-danger">Field Required</small>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Address 2</mat-label>
+    <textarea type="text" formControlName="address2" matInput placeholder="Street, Area or Localty"></textarea>
+    <small *ngIf="loginform.get('address2')?.invalid && loginform.get('address2')?.touched"  class="text-danger">Field Required</small>
+  </mat-form-field> -->
+
+
+  <div class="form-row">
+
+    <mat-form-field appearance="fill" class="state">
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state"  (ngModelChange)="onStateSelected()">
+        <mat-option *ngFor="let i of stateList" value={{i.iso2}}>{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="city">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city">
+        <mat-option *ngFor="let j of cities" value={{j.name}}>{{j.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+  
+  <div class="form-row">
+
+    <mat-form-field class="example-full-width" appearance="fill" class="postalcode">
+      <mat-label>Postal Code</mat-label>
+      <input matInput type="text" formControlName="postalcode" #postalCode placeholder="Ex. 94105" value="94043">
+      <!-- <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint> -->
+
+      
+        <mat-error *ngIf="loginform.get('postalcode')?.errors?.['minlength']">* minimum 6 characters</mat-error>
+        <mat-error *ngIf="loginform.get('postalcode')?.errors?.['maxlength']">* maximum 6 characters</mat-error>
+        <mat-error *ngIf="loginform.get('postalcode')?.errors?.['pattern']">* Number only</mat-error>
+      
+     
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill" class="phone">
+      <mat-label>Phone</mat-label>
+      <span matPrefix>+91 &nbsp;</span>
+      <input type="text" formControlName="phone" matInput placeholder="Number">
+      <mat-icon matSuffix></mat-icon>
+      <mat-error *ngIf="loginform.get('phone')?.errors?.['minlength']">* minimum 10 characters</mat-error>
+      <mat-error *ngIf="loginform.get('phone')?.errors?.['maxlength']">* maximum 10 characters</mat-error>
+      <mat-error *ngIf="loginform.get('phone')?.errors?.['pattern']">* Number only</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <button type="submit" [disabled]="loginform.invalid" class="btn btn-secondary">Submit</button>
+  
+</form>

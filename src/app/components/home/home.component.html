@@ -1,0 +1,96 @@
+
+<!--side navbar-->
+    <mat-drawer-container class="example-container" autosize>
+      <mat-drawer #drawer class="example-sidenav" mode="side">
+        <div class="example-button-row" *ngFor="let categoryItem of categoryList">
+          <a (click)="categoryIdPass(categoryItem.id)" class="catLinks">{{categoryItem.category_name}}</a>
+        </div>
+        <div class="example-button-row">
+          <a (click)="noCategory(0)" value="0" class="catLinks">All</a>
+        </div>
+          
+      <mat-icon class="cross" (click)="drawer.close()" (click)="funcShow()">clear</mat-icon>
+      </mat-drawer>
+    </mat-drawer-container>
+
+    <button type="button" class="togglesizenav" id="tgsidenav" (click)="drawer.open()" (click)="funcHide()">
+      <h6 id="categorylabel">Category</h6>
+    </button>
+
+
+
+  <!--display card section-->
+
+  <div class="filtersortsection">
+    <div class="search">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="search" name='search' aria-label="search" [(ngModel)]='search'>
+        <button mat-raised-button type="submit" (click)="onSearchFilter()">Search</button>
+        &nbsp;
+       
+        
+      </form>
+    </div>
+
+    <div class="sort">
+      <select class="form-select" [(ngModel)] = 'ascendingordecending' aria-label="Default select example">
+        <option value="" disabled selected hidden>Sort by</option>
+        <option value="desc">Price: High to Low</option>
+        <option value="asc">Price: Low to High</option>
+      </select>
+      &nbsp;
+      &nbsp;
+      <button mat-raised-button type="submit" (click)="onClearFilter()">Clear</button>
+    </div>
+    
+  </div>
+
+<div class="rowsection">
+
+  <div class="row">
+  
+    <div class="col-xs-9 col-sm-6 col-md-4 col-lg-3 col-xl-3" *ngFor="let i of productList| filter:searchFilter:'product_name' |sort:['product_unit_price', ascendingordecending] | paginate: {itemsPerPage:4,currentPage:p}; ">
+      <div class="card card1" (click)="Datapass(i.id)">
+        <ng-container *ngFor="let j of i.productImages">
+            <img src={{j.image5}} class="card-img-top img-responsive" loading="eager">
+        </ng-container> 
+        <div class="card-body">
+          <label class="card-title">
+            {{i.product_name}}
+          </label>
+          <label class="card-text">
+            <p id="price" [ngStyle]="{'text-decoration':i.product_discount_price? 'line-through' : 'none' }">{{i.product_unit_price | currency : 'INR'}}</p><p id="price" style="color: red;"  *ngIf="i.product_discount_price">-{{i.product_discount_percentage}}%</p>
+            <p id="discount">{{i.product_discount_price | currency : 'INR'}}</p>
+          </label>
+          
+          <h6 class="card-text"></h6>
+        </div>
+      </div>
+    
+  </div>
+</div>
+
+</div>
+
+
+<div class="page">
+  <div>
+    <pagination-controls [maxSize]="maxSize" (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+ 

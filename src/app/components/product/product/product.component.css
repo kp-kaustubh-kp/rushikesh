@@ -1,0 +1,138 @@
+
+/*main container*/
+.container{
+    max-height: 100%;
+    max-width: 100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.mat-card{
+    box-shadow: none;
+}
+/* card elemnt */
+.example-card {
+    max-width: 100%;
+    height:100%;
+    /* background-color: red; */
+   
+
+}
+.form-col{
+    display:flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.btn{
+    box-shadow: none;
+}
+.productNameText{
+    font-size: 18px;
+    font-weight: 500;
+    margin:5px 0 5px 0;
+}
+p{
+    display: inline-block;
+}
+.carousel-inner{
+    background-color:transparent;
+    height: fit-content;
+    max-width: 400px;
+    padding: auto;
+    border-radius: 15px;
+   
+}
+
+
+
+.carousel-control-next-icon{
+    background-image: url("src/assets/images/icons/arrow-right.png");
+}
+.carousel-control-prev-icon{
+    background-image: url("src/assets/images/icons/arrow-right.png");
+    transform: rotate(180deg);
+}
+.carousel-indicators{
+    background-color: black;
+    border-radius: 10px;
+    
+}
+img{
+    max-width:450px;
+    max-height:450px;
+}
+
+
+.detailCard{
+    max-width:90%;
+    max-height:80%;
+    /* background-color: blue; */
+}
+
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@media screen and(min-width: 1401px) and (max-width:3840px){
+    .carousel-inner{
+        width:400px;
+      }
+
+    .detailCard{
+        height:30%;
+    }
+}
+@media screen and (min-width: 1201px) and (max-width: 1400px){
+    .carousel-inner{
+        width:400px;
+      }
+
+    .detailCard{
+        height:30%;
+    }
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    .carousel-inner{
+        width:300px;
+      }
+    .detailCard{
+        height:30%;
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    
+    .carousel-inner{
+        width:300px;
+      }
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 767px){
+    .carousel-inner{
+        width:300px;
+      } 
+}
+
+@media screen and (max-width:575px){
+   .container{
+    flex-direction: column;
+   }
+   .carousel-inner{
+    width:300px;
+    } 
+ 
+     .detailCard{
+        width:100%;
+        
+    }
+}
+
+

@@ -1,0 +1,187 @@
+<div class="container">
+    
+
+    <mat-card class="example-card">
+
+      <div class="productShow" *ngFor="let product of receivedData">
+        <img src={{product.cart_item_image}} class="productImg">
+        &nbsp;
+        <div style="width:100%;">
+          <label class="text-name">Name : {{product.cart_item_name}}</label>
+        </div>
+        &nbsp;
+        <div style="width:100%;">
+          <label class="text-price">Total Price : {{product.cart_item_totalprice | currency:"INR"}}</label>
+        </div>
+        &nbsp;
+      &nbsp;
+      </div>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+        <mat-card-content>
+
+
+          <form [formGroup]=" checkoutform" (ngSubmit)="onSubmit()" class="example-form">
+            <!-- <div formGroupName="shippingaddress" class="form-group">
+              <label>shipping address</label>
+              <input class="form-control" type="text" formControlName="address">
+              <div *ngIf="checkoutform.get('shippingaddress.address')?.invalid && checkoutform.get('shippingaddress.address')?.touched ">
+                <div *ngif="">
+
+                </div>
+              </div>
+            </div>
+            <input type="checkbox" id="check" (change)="onChangeValue($event)">
+            <div formGroupName="billingaddress">
+              <label>billing address</label>
+              <input type="text" formControlName="address">
+            </div>
+            <button type="submit">submit</button> -->
+            
+            <label class="shippingaddresslabel">Shipping Address</label>
+            &nbsp;
+            &nbsp;
+              <div formGroupName="shippingaddress" class="form-area">
+                <mat-form-field class="example-full-width" appearance="fill" >
+                  <mat-label>Address</mat-label>
+                  <textarea matInput placeholder="House no or Flat" formControlName="housenumber"></textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill" >
+                  <mat-label>Address</mat-label>
+                  <textarea matInput placeholder="Area or Localty" formControlName="area"></textarea>
+                </mat-form-field>
+
+              <div class="form-row">
+                <mat-form-field appearance="fill" class="state">
+                  <mat-label>State</mat-label>
+                  <mat-select formControlName="state"  (ngModelChange)="onStateSelected()">
+                    <mat-option *ngFor="let state of stateList" [value]='state.iso2' id="shippingcheck">{{state.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            
+                <mat-form-field appearance="fill" class="city">
+                  <mat-label>City</mat-label>
+                  <mat-select formControlName="city">
+                    <mat-option *ngFor="let city of cities" value={{city.name}}>{{city.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="form-row">
+                  <mat-form-field class="example-full-width" appearance="fill" class="postalcode">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput type="text" formControlName="postalcode" #postalCode placeholder="Ex. 941051" autocomplete="off">
+                    <!-- <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint> -->
+                    <mat-error *ngIf="checkoutform.get('shippingaddress.postalcode')?.errors?.['minlength']">* Minimum 6 charaters</mat-error>
+                    <mat-error *ngIf="checkoutform.get('shippingaddress.postalcode')?.errors?.['maxlength']">* Maximum 6 charaters</mat-error>
+                    <mat-error *ngIf="checkoutform.get('shippingaddress.postalcode')?.errors?.['pattern']">* Number only</mat-error>
+                  </mat-form-field>
+                  
+                  
+              </div>
+                
+            </div>
+              <div class="form-check checkboxsection">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="onChangeValue($event)">
+                <label class="form-check-label" for="flexCheckDefault" >
+                  Billing address is same as shipping address!
+                </label>
+              </div>
+              <label class="billingaddresslabel">Billing Address</label>
+                <div formGroupName="billingaddress" class="form-area">
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                      <mat-label>Address</mat-label>
+                      <textarea matInput placeholder="House no or Flat" formControlName="housenumber"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                      <mat-label>Address</mat-label>
+                      <textarea matInput placeholder="Area or Localty" formControlName="area"></textarea>
+                    </mat-form-field>
+    
+                  <div class="form-row">
+                    <mat-form-field appearance="fill" class="state">
+                      <mat-label>State</mat-label>
+                      <mat-select formControlName="state"  (ngModelChange)="onStateSelected()" id="billselect">
+                        <mat-option *ngFor="let state of stateList" [value]='state.iso2'>{{state.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="fill" class="city">
+                      <mat-label>City</mat-label>
+                      <mat-select formControlName="city">
+                        <mat-option  *ngFor="let city of cities" value={{city.name}}>{{city.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+    
+                  <div class="form-row">
+                    <mat-form-field class="example-full-width" appearance="fill" class="postalcode">
+                      <mat-label>Postal Code</mat-label>
+                      <input matInput type="text" formControlName="postalcode" #postalCode placeholder="Ex. 941051">
+                      <!-- <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint> -->
+                      <mat-error *ngIf="checkoutform.get('billingaddress.postalcode')?.errors?.['minlength']">* Minimum 6 charaters</mat-error>
+                      <mat-error *ngIf="checkoutform.get('billingaddress.postalcode')?.errors?.['maxlength']">* Maximum 6 charaters</mat-error>
+                      <mat-error *ngIf="checkoutform.get('billingaddress.postalcode')?.errors?.['pattern']">* Number only</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+               
+
+                <label class="credircardlabel">Card Details</label>
+                <div formGroupName="creditcard" class="form-area">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Name on card</mat-label>
+                    <input matInput formControlName="nameoncard">
+                    <mat-error *ngIf="checkoutform.get('creditcard.nameoncard')?.errors?.['pattern']">* Alphabets only</mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Card Number</mat-label>
+                    <input matInput formControlName="cardnumber">
+                    <mat-error *ngIf="checkoutform.get('creditcard.cardnumber')?.errors?.['minlength']">* Minimum 12 charaters</mat-error>
+                    <mat-error *ngIf="checkoutform.get('creditcard.cardnumber')?.errors?.['maxlength']">* Maximum 12 charaters</mat-error>
+                    <mat-error *ngIf="checkoutform.get('creditcard.cardnumber')?.errors?.['pattern']">* Number only</mat-error>
+                  </mat-form-field>
+
+                  <div class="form-row">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>CVV</mat-label>
+                      <input matInput formControlName="cvv">
+                      <mat-error *ngIf="checkoutform.get('creditcard.cvv')?.errors?.['minlength']">* Minimum 3 charaters</mat-error>
+                      <mat-error *ngIf="checkoutform.get('creditcard.cvv')?.errors?.['maxlength']">* Maximum 3 charaters</mat-error>
+                      <mat-error *ngIf="checkoutform.get('creditcard.cvv')?.errors?.['pattern']">* Number only</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-label>Expiry Date</mat-label>
+                      <input matInput [matDatepicker]="datepicker" formControlName="expirydate">
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                          <button mat-button matDatepickerCancel>Cancel</button>
+                          <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                      </mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                &nbsp;
+                
+                <button class="btn btn-success" type="submit" [disabled]="checkoutform.invalid">Confirm</button>
+          </form>
+           
+              
+        </mat-card-content>
+        <mat-card-actions>
+         
+        </mat-card-actions>
+    </mat-card>
+
+
+   
+
+
+</div>

@@ -1,0 +1,17 @@
+
+<div class="container" *ngFor="let trackitem of trackingList">
+  <div class="productImage">
+    <img src={{trackitem.image}}>
+    &nbsp;
+    <label>{{trackitem.productname}}</label>
+  </div>
+  &nbsp;
+  &nbsp;
+  <div class="track">
+    <div class="step" [ngClass]="{'active':trackitem.orderconfirmed == 1}"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+    <div class="step" [ngClass]="{'active':trackitem.pickedbycourier == 1}"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Picked by courier</span> </div>
+    <div class="step" [ngClass]="{'active':trackitem.ontheway == 1}"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">On the way</span></div>
+    <div class="step" [ngClass]="{'active':trackitem.outfordelivery == 1}"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Out for Delivery</span> </div>
+    <div class="step" [ngClass]="{'active':trackitem.delivered == 1}"> <span class="icon"> <i class="fa fa-truck-ramp-box"></i> </span> <span class="text">Delivered</span> </div>
+  </div>
+</div>

@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Indie+Flower&family=Open+Sans:wght@300&display=swap');
+
+:root {
+  --black: #000000;
+  
+}
+
+.example-container {
+  position: absolute;
+  top:100px;
+  left: 0;
+  z-index: 1;
+  width: 150px;
+  height: 210px;
+  background-color: transparent;
+  
+}
+mat-drawer{
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left:0;
+  top:30px;
+  width: 150px;
+  max-height: 100%;
+  border: 1px solid black;
+  border-radius: 0 10px 10px 0;
+  align-items: center;
+  justify-content: center;
+ 
+  
+  
+}
+
+
+
+.togglesizenav{
+  position: absolute;
+  top:100px;
+  left: 0;
+  z-index: 1;
+  max-height:100%;
+  width:35px;
+  border-radius: 0 10px 10px 0;
+  background-color: white;
+  
+}
+.example-sidenav {
+  padding: 5px;
+}
+.cross{
+  position: absolute;
+  top:8px;
+  right: 8px;
+  font-size: 23px;
+  color:grey;
+}
+.cross:hover{
+  font-size: 23.5px;
+  color:black;
+
+}
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#categorylabel{
+    
+    margin:10px auto;
+    font-size: 17px;
+    font-weight: 900;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.example-button-row{
+  position:relative;
+  top:30px;
+  padding: 10px;
+  
+}
+.catLinks{
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  color: grey;
+  cursor:default;
+}
+.catLinks:hover{
+  color: black;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  margin:10px 10px;
+  /* background-color: red; */
+  width: 80%;
+
+}
+.rowsection{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtersortsection{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
+  /* background-color: blueviolet; */
+ 
+  
+} 
+.mat-raised-button{
+  font-size: 14px;
+  border-radius: 12%;
+  padding: 0 1px;
+
+}
+
+.search{
+  display:flex;
+  max-width:400px;
+  /* background-color: green; */
+}
+
+.sort{
+  display:flex;
+  padding-left: 20px;
+  max-width:400px;
+}
+
+.card1{
+  max-width: 380px;
+  max-height: 800px;
+  margin:10px auto;
+  border-radius: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.card-img-top{
+  max-width: 380px;
+  max-height: 430px;
+  border-radius: 25px;
+
+}
+.card-title{
+  font-size: 18px;
+  font-weight: 500;
+ 
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+.page{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 400px;
+  margin-top: 20px;
+  padding: 20px;
+  /* background-color: blue; */
+  
+
+}
+#price{
+  display: inline-block;
+}
+
+@media screen and (min-width: 1401px) and (max-width: 3840px) {
+  .card1{
+    width:200px;
+    height:400px;
+   }
+
+}
+
+@media screen and (min-width: 1199px) and (max-width: 1400px){
+  .card1{
+   width:200px;
+   height:400px;
+  }
+ 
+ }
+
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+ .card1{
+  width:200px;
+  height:400px;
+ }
+ .row{
+  width: 100%;
+ }
+  
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card1{
+    width:230px;
+    height:400px;
+    
+   }
+   .serach{
+    width:36%;
+   }
+
+   .row{
+    width: 100%;
+   }
+ 
+}
+
+
+
+@media screen and (min-width: 576px) and (max-width: 767px){
+  .card1{
+    width:230px;
+    height:420px;
+   }
+
+   .col-sm-6{
+    margin: 30px auto;
+   }
+
+   /* .card-title, .card-text{
+    display:flex;
+    flex-direction: column;
+  } */
+  .row{
+    width: 100%;
+   }
+
+ 
+ 
+
+}
+
+@media screen and (max-width:575px){
+
+  .card1{
+    width:250px;
+    height:420px;
+   }
+ 
+  .col-xs-9{
+    margin: 10px auto;
+  }
+ /* .card-text{
+    display:flex;
+    flex-direction: column;
+  } */
+  
+  .filtersortsection{
+    flex-direction: column;
+  }
+  .sort{
+    margin-top:10px;
+  }
+  .togglesizenav{
+    top:180px;
+  }
+  .example-container{
+    top:180px;
+  }
+  .row{
+    width: 100%;
+   }
+
+
+}

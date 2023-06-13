@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+  
+}
+
+mat-menu{
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+@media screen and (max-width:575px){
+
+   
+}

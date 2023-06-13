@@ -1,0 +1,44 @@
+
+<div class="container">
+
+      <div class="card first" id="card">
+        <div class="card-body firstbody">
+              <div class="purchaseItem" (click)="myFunc('history')">
+                <img src="assets/gif/sidenav_basket.gif">
+                <label>History</label>
+              </div>
+              <div class="resetaccount" (click)="myFunc('resetpassword')">
+                <img src="assets/gif/sidenav_reset.gif">
+                <label>Password</label>
+              </div>
+              
+              <div class="wishlist" (click)="myFunc('wishlist')">
+                <img src="assets/gif/exit.gif">
+                <label>Logout</label>
+              </div>
+              <div class="welcome" (click)="myFunc('welcome')">
+                <img src="assets/gif/sidenav_avator.gif">
+                <label>Profile</label>
+              </div>
+        </div>
+      </div>
+      <div class="card second">
+
+        <div class="dropdown" style="float:left;">
+          <button class="dropbtn"><i class="fa-solid fa-bars"></i></button>
+          <div class="dropdown-content" style="left:0;">
+            <a routerLink="/trial/trial/purchasedhistory">History</a>
+            <a routerLink="/trial/trial/resetpassword">Password</a>
+            <a routerLink="/trial/trial/wishlist">Wishlist</a>
+            <a routerLink="/trial/trial/welcome">Profile</a>
+            <a (click)="onLogout()">Logout</a>
+          </div>
+        </div>
+                      
+          <router-outlet></router-outlet>
+      </div>
+
+</div>
+
+
+ 

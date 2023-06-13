@@ -1,0 +1,165 @@
+<div class="filterandsort">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2 search" type="search" placeholder="search" name='search' aria-label="search" [(ngModel)]='search'> 
+    </form>
+    &nbsp;
+    &nbsp;
+    <div class="sort">
+        <select class="form-select sort" [(ngModel)] = 'prop' aria-label="Default select example">
+            <option value="" disabled selected hidden>Sort by</option>
+            <option value="orderconfirmed">orderconfirmed</option>
+            <option value="pickedbycourier">pickedbycourier</option>
+            <option value="ontheway">ontheway</option>
+            <option value="outfordelivery">outfordelivery</option>
+            <option value="delivered">delivered</option>
+            <option value="pending">pending</option>
+        </select> 
+    </div>
+    &nbsp;
+    &nbsp;
+    <!-- <div class="sort">
+        <select class="form-select sort" [(ngModel)] = 'status' aria-label="Default select example">
+        <option value="" disabled selected hidden>Sort by</option>
+        <ng-container *ngIf="this.prop == 'pickedbycourier'">
+            <option value="desc">Active</option>
+            <option value="asc">Disabled</option>
+        </ng-container>
+        <ng-container *ngIf="this.prop == 'product_unit_price' || this.prop == 'product_discount_price' || this.prop == 'product_unit_instock' ">
+            <option value="desc">High to Low</option>
+            <option value="asc">Low to High</option>
+        </ng-container> 
+        </select> 
+    </div> -->
+    &nbsp;
+    &nbsp;
+  <button mat-raised-button type="submit" (click)="onClearFilter()">Clear</button>
+  </div>
+
+  <div class="tableContainer">
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+           
+            <th scope="col">Name</th>
+            <th scope="col">Tracking ID</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Picked</th>
+            <th scope="col">In Transit</th>
+            <th scope="col">outfordelivery</th>
+            <th scope="col">delivered</th>
+            <th scope="col">Status</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody *ngFor="let items of trackingList | admindashboardfilter:search:'trackingid' | admindashboardsort:[prop,status] | paginate: {itemsPerPage:4,currentPage:p}; ">
+          <tr>
+           
+            <td>
+                <div>
+                    <img src={{items.image}} width="70px" height="70px" class="tableImg img-responsive" loading="eager">
+                    &nbsp;
+                    &nbsp;
+                    <label>{{items.productname}}</label>
+                </div>
+            </td>
+            
+            <td>{{items.trackingid}}</td>
+            <td>
+              <p *ngIf="items.orderconfirmed"><mat-icon>check</mat-icon></p>
+              <p *ngIf="!items.orderconfirmed"><mat-icon>close</mat-icon></p>
+            </td>
+
+            <td>
+              <p *ngIf="items.pickedbycourier"><mat-icon>check</mat-icon></p>
+              <p *ngIf="!items.pickedbycourier"><mat-icon>close</mat-icon></p>
+            </td>
+            <td>
+              <p *ngIf="items.ontheway"><mat-icon>check</mat-icon></p>
+              <p *ngIf="!items.ontheway"><mat-icon>close</mat-icon></p>
+            </td>
+            <td>
+              <p *ngIf="items.outfordelivery"><mat-icon>check</mat-icon></p>
+              <p *ngIf="!items.outfordelivery"><mat-icon>close</mat-icon></p>
+            </td>
+            <td>
+              <p *ngIf="items.delivered"><mat-icon>check</mat-icon></p>
+              <p *ngIf="!items.delivered"><mat-icon>close</mat-icon></p>
+            </td>
+            <td>
+                <div>
+                    <button type="button" mat-stroked-button data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="onSubmitModal(items.id)">Status</button>
+                    <!--  -->
+                </div>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table> 
+      
+</div>
+    <div class="page">
+        <div>
+        <pagination-controls [maxSize]="maxSize" (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Track Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <section class="example-section" [formGroup]="sta">
+              <div class="confirmed">
+                <p>Confirmed</p>
+                <mat-checkbox formControlName="orderconfirmed" ></mat-checkbox>
+              </div>
+              
+              <div class="confirmed">
+                <p>Courier</p>
+                <mat-checkbox formControlName="pickedbycourier" ></mat-checkbox>
+              </div>
+                
+
+              <div class="confirmed">
+                <p>On the way</p>
+                <mat-checkbox formControlName="ontheway" ></mat-checkbox>
+              </div>
+                
+              <div class="confirmed">
+                <p>Out for delivery</p>
+                <mat-checkbox formControlName="outfordelivery" ></mat-checkbox>
+              </div>
+                
+
+              <div class="confirmed">
+                <p>Delivered</p>
+                <mat-checkbox formControlName="delivered" ></mat-checkbox>
+              </div>
+                
+              <div class="confirmed" *ngIf="this.sta.value.pending">
+                <p>Pending</p>
+                <mat-checkbox formControlName="pending"></mat-checkbox>
+              </div>
+
+               <div class="confirmed">
+                  <button mat-raised-button (click)="onSubmit(sta.value)">Submit</button>
+               </div>
+            </section>
+            <!-- <section class="example-section" [formGroup]="sta">
+                <h4>You chose:</h4>
+                {{sta.value | json}}
+            </section> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,15 @@
+#wrapper{
+    position:relative;
+  }
+  #wrapper .text {
+    position: absolute;
+    bottom: 30px;
+    left: 0px;
+    visibility: hidden;
+  }
+  #wrapper:hover .text {
+    visibility: visible;
+  }
+  #wrapper:hover img{
+    visibility: hidden;
+  }

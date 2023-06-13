@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="text">
+      <p>Purchased History</p>
+  </div>
+  <div class="empty"  *ngIf="purchaseItemList.length === 0">
+    <img class="emptyimage"  src="assets/gif/purchasedlistempty.gif">
+  </div>
+  <div class="container">
+    
+      <div class="card" *ngFor="let i of purchaseItemList">
+        <div class="card-head">
+          <img class="productimage img-responsive" src={{i.purchased_product_image}} loading="eager">
+        </div>
+        <div class="card-body">
+          <label class="productName">{{i.purchased_product_name}}</label>
+          <div class="card-text">
+            <label>Price - {{i.purchased_product_price | currency:'INR'}}</label>
+            <label style="margin-left:20px;">Quantity - {{i.purchased_product_quantity}}</label>
+            <label style="margin-left:20px;">Date - {{i.purchased_product_date | date:'mediumDate'}}</label>
+          </div>
+          <div class="card-content">
+            <button mat-raised-button (click)="onTrack(i.purchased_product_trackingid)">Track</button>
+            &nbsp;
+            &nbsp;
+            <button mat-raised-button (click)="onCancelrequest(i.id,i.purchased_product_id)">Cancel Request</button>
+          </div>
+          
+        </div>
+      </div>
+    
+    
+  </div>
+</div> 
+
+ 

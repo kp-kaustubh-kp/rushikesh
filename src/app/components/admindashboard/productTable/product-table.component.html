@@ -1,0 +1,97 @@
+
+
+
+
+
+<div class="filterandsort">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2 search" type="search" placeholder="search" name='search' aria-label="search" [(ngModel)]='search'> 
+    </form>
+    &nbsp;
+    &nbsp;
+    <div class="sort">
+        <select class="form-select sort" [(ngModel)] = 'prop' aria-label="Default select example">
+            <option value="" disabled selected hidden>Sort by</option>
+            <option value="active">Status</option>
+            <option value="product_unit_price">Price</option>
+            <option value="product_discount_price">Discount</option>
+            <option value="product_unit_instock">Units</option>
+        </select> 
+    </div>
+    &nbsp;
+    &nbsp;
+    <div class="sort">
+        <select class="form-select sort" [(ngModel)] = 'status' aria-label="Default select example">
+        <option value="" disabled selected hidden>Sort by</option>
+        <ng-container *ngIf="this.prop == 'active'">
+            <option value="desc">Active</option>
+            <option value="asc">Disabled</option>
+        </ng-container>
+        <ng-container *ngIf="this.prop == 'product_unit_price' || this.prop == 'product_discount_price' || this.prop == 'product_unit_instock' ">
+            <option value="desc">High to Low</option>
+            <option value="asc">Low to High</option>
+        </ng-container> 
+        </select> 
+    </div>
+    &nbsp;
+    &nbsp;
+  <button mat-raised-button type="submit" (click)="onClearFilter()">Clear</button>
+  </div>
+
+  <div class="tableContainer">
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+           
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Units</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Operation</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let items of productList | admindashboardfilter:search:'product_name' | admindashboardsort:[prop,status] | paginate: {itemsPerPage:4,currentPage:p}; ">
+          <tr>
+           
+            <td>
+                <div>
+                    <img src={{items.productImages[0].image1}} width="70px" height="70px" class="tableImg img-responsive" loading="eager">
+                    &nbsp;
+                    &nbsp;
+                    <label>{{items.product_name}}</label>
+                </div>
+            </td>
+            
+            <td>{{items.product_unit_price | currency:'INR'}}</td>
+            <td>{{items.product_unit_instock}}</td>
+            <td>{{items.product_discount_price | currency:'INR'}}</td>
+            <td>
+              <ng-container *ngIf="items.active == true">
+              <p style="color:green;">Active</p>
+              </ng-container>
+              <ng-container *ngIf="items.active == false">
+                <p style="color:red;">Disabled</p>
+              </ng-container>
+            </td>
+            <td>
+              <div>
+                <button mat-stroked-button (click)="onUpdate(items.id, items.productImages[0].id)">Update</button>
+                &nbsp;
+                &nbsp;
+                <button mat-stroked-button color="warn" (click)="onDelete(items.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+      
+</div>
+    <div class="page">
+        <div>
+        <pagination-controls [maxSize]="maxSize" (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+
+

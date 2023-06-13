@@ -1,0 +1,52 @@
+
+<div class="tableContainer">
+    
+
+   <div class="card" *ngFor="let i of cartList">
+        <div class="card-header">
+          <img src={{i.cart_item_image}} class="card-img-top img-responsive" alt="..."  loading="eager">
+        </div>
+        <div class="card-body first">
+              <h5 class="card-title">{{i.cart_item_name}}</h5>
+              <p class="card-text text1">{{i.cart_item_price | currency:'INR'}}</p>
+              <div class="detail">
+                <p class="card-text text2">Qty: {{i.cart_item_quantity}}</p>
+                &nbsp;
+                &nbsp;
+                <p class="card-text text3">Size: {{i.cart_item_size}}</p>
+              </div>
+        
+              <div class="number">
+                <label>Quantity :</label>
+                &nbsp;
+                <button class="btn btn-secondary minus" (click)="decrementQuantity(i.cart_item_price,i.id,i.cart_item_quantity,i.cart_item_totalprice)">-</button>
+                <input type="text" value={{i.cart_item_quantity}}>
+                <button class="btn btn-secondary plus" (click)="incrementQuantity(i.cart_item_price,i.id,i.cart_item_quantity)">+</button>
+              </div>
+          &nbsp;
+        </div>
+
+        <div class="card-body second">
+          <label>Total : {{i.cart_item_totalprice | currency:'INR'}}</label>
+          &nbsp;
+          &nbsp;
+          <button mat-stroked-button (click)="finalData(i.id)">Checkout</button>
+          &nbsp;
+          <button mat-stroked-button (click)="deleteCartItem(i.id)">
+            <img src="assets/gif/delete.gif" width="30px" height="30px" alt="" loading="eager" class="img-responsive">
+          </button>
+        </div> 
+  </div>
+
+
+</div>
+
+ 
+<div class="empty" *ngIf="this.cart.cartItemSize === 0 || this.cart.cartItemSize === undefined">
+      <div class="cartEmptyShow">
+        <p>Cart is empty</p>
+      </div>
+      <div class="gif">
+        <img src="assets/gif/emptycart.gif" class="gif">
+      </div>
+</div> 

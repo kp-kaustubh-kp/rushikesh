@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Indie+Flower&display=swap');
+
+.footer {
+    display: block;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+#facebook, #twitter, #google, #instagram, #linkedin, #github{
+    font-size: 18px;
+    transition: 0.2s;
+    
+}
+
+#facebook:hover{
+    font-size: 20px;
+    color:blue;
+}
+#twitter:hover{
+    font-size: 20px;
+    color:rgb(0, 217, 255);
+}
+#google:hover{
+    font-size: 20px;
+    color: red;
+}
+
+#instagram:hover{
+    font-size: 20px;
+    color: rgb(255, 3, 167);
+}
+
+#linkedin:hover{
+    font-size: 20px;
+    color:blue;
+}
+
+#github:hover{
+    font-size: 20px;
+    color:rgb(3, 174, 3);
+
+}
+
+@media screen and (min-width: 1199px) and (max-width: 1400px){
+   
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+   
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+   
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 767px){
+  
+}
+
+@media screen and (max-width:575px){
+   .footerMidSection{
+    flex-direction: column;
+   }
+}
+
+

@@ -1,0 +1,18 @@
+<div class="login">
+
+    <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <button class="btn" [class.btn-light]=flag (click)="apply('login')">Login</button>
+            <button class="btn" [class.btn-light]=!flag (click)="apply('reg')">Register</button> 
+          </div>
+          <div *ngIf=flag>
+            <app-userlogin></app-userlogin>
+          </div>
+          <div *ngIf=!flag>
+          <app-userregister></app-userregister>
+          </div>
+        </div>
+    </div>
+
+</div>

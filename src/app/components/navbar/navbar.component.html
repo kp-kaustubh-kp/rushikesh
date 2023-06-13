@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <i><h6 class="brandlogo" routerLink="/home">S4Shoes</h6></i>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+          <li class="nav-item pb-1 px-2">
+            <a class="nav-link active" aria-current="page" routerLink="home/home">
+              <img  src="assets/gif/home2.gif" width="40px" height="40px">
+              <div class="text">Home</div>
+            </a>
+          </li>
+          <li class="nav-item pb-1 px-2">
+            
+            <a class="nav-link" routerLink="trial/trial" routerLinkActive="active">
+              <img  src="assets/gif/dashboard.gif" width="40px" height="40px">
+              <div class="text">Dashboard</div>
+            </a>
+            
+          </li>
+          <li class="nav-item pb-1 px-2">
+            <a class="nav-link" routerLink="account/account" routerLinkActive="active">
+              <img  src="assets/gif/account.gif" width="40px" height="40px">
+              <div class="text">Account</div>
+            </a>
+          </li>
+         
+          <li class="nav-item pb-1 px-2">
+            <a class="nav-link" routerLink="about/about" routerLinkActive="active">
+              <img  src="assets/gif/about.gif" width="40px" height="40px">
+              <div class="text">About</div>
+            </a>
+            
+          </li>
+          
+          <li class="nav-item pb-1 px-2" id="zigzag">
+            <a class="nav-link" routerLink="cart/cart" routerLinkActive="active">
+              <app-cartstatus></app-cartstatus>
+            </a> 
+          </li>
+        </ul>
+        
+        
+      </div>
+    </div>
+  </nav>

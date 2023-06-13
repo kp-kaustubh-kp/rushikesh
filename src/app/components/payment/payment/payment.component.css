@@ -1,0 +1,88 @@
+.container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+.example-card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    max-height:100%;
+    width: 480px;
+    box-shadow: none;
+    
+}
+
+.mat-card-content{
+    display:flex;
+    flex-direction: column;
+}
+
+.mat-form-field{
+    display: block;
+    margin: 10px 10px;
+}
+
+.form-row{
+    display:flex;
+    flex-direction: row;
+}
+
+.productShow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 54%;
+    max-height: 50%;
+    
+}
+.productImg{
+    max-width:100%;
+    max-height:100%;
+    border-radius:20%;
+}
+.text-name, .text-price{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.checkboxsection{
+    margin: 10px 0 10px 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.billingaddresslabel, .shippingaddresslabel, .credircardlabel{
+    margin: 10px auto;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 1199px) and (max-width: 1400px){
+    
+   
+   }
+  
+  
+@media screen and (min-width: 992px) and (max-width: 1200px){
+   
+    
+  }
+  
+  
+@media screen and (min-width: 768px) and (max-width: 991px) {
+   
+   }
+   
+@media screen and (min-width: 576px) and (max-width: 767px){
+  
+  }
+  
+@media screen and (max-width:575px){
+    .form-row{
+        flex-direction: column;
+       }
+  }
